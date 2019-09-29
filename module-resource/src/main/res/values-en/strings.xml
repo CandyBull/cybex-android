@@ -28,7 +28,7 @@
     <string name="watch_list_vibration_range_title">24h Chg%</string>
 
     <!-- Account page -->
-    <string name="log_in_cybex">Log in Cybex</string>
+    <string name="log_in_cybex">Log in CandyBull</string>
     <string name="account_balance">Your Total Balance(CYB):</string>
     <string name="account_introduction_text">CYBEX is a decentralized exchange that seeks to improve the liquidity of crypto-assets that’s more transparent, highly efficient and secure.</string>
     <string name="account_available_asset">Your Portfolio</string>
@@ -47,9 +47,9 @@
     <string name="text_address_management">Address Management</string>
     <string name="text_coin_age">Coin Age</string>
     <string name="text_coin_age_with_colon">Coin Age:</string>
-    <string name="text_coin_age_dialog_content"><Data><![CDATA[Coin age is calculated based on the CYB in the CYBEX account. It is updated at UTC+00:00 every day.<br>
+    <string name="text_coin_age_dialog_content"><Data><![CDATA[Coin age is calculated based on the CYB in the CandyBull account. It is updated at UTC+00:00 every day.<br>
 
-<font color="#fe9b55">Calculation Rules</font><br>
+<font color="#2ed8d8">Calculation Rules</font><br>
 Starting time: the date of CYBEX exchange launched<br>
 
 Coin age = coin age of the previous day * a depreciation coefficient (X = 0.975) + open interests of CYB for the day<br>
@@ -138,7 +138,7 @@ If user C purchases 10,000 CYB and sells it the same day, coin age = 10000; Afte
     <string name="setting_theme_light">Light</string>
     <string name="setting_version_is_the_latest">The current version is the latest one</string>
     <string name="setting_version_update_available">Update Available</string>
-    <string name="setting_version_update_content">A new version of CybexDex is available,Please update to newest version now.</string>
+    <string name="setting_version_update_content">A new version of CandyBullDex is available,Please update to newest version now.</string>
     <string name="setting_version_update_next_time">Next</string>
     <string name="setting_version_update_now">Update</string>
     <string name="setting_frequency_ordinary_market">Ordinary Market</string>

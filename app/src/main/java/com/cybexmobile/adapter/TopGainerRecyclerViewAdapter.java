@@ -92,7 +92,7 @@ public class TopGainerRecyclerViewAdapter extends RecyclerView.Adapter<TopGainer
 
     @Override
     public int getItemCount() {
-        return 6;
+        return 3;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

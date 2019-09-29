@@ -151,7 +151,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/margin_40"
-            android:textColor="@color/login_register_color" />
+            android:textColor="@color/primary_color_orange" />
 
     </RelativeLayout>
 

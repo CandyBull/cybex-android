@@ -31,13 +31,13 @@ android {
     flavorDimensions "default"
     productFlavors {
         googleplay {
-            applicationId 'com.cybexmobile'
+            applicationId 'com.candybull'
             applicationIdSuffix ".google"
             dimension 'default'
             manifestPlaceholders = [UMENG_CHANNEL: "googleplay"]
         }
         online {
-            applicationId 'com.cybexmobile'
+            applicationId 'com.candybull'
             dimension 'default'
             manifestPlaceholders = [UMENG_CHANNEL: "online"]
         }
@@ -117,7 +117,7 @@ dependencies {
     implementation "com.android.support:exifinterface:$rootProject.ext.dependencies.support_version"
     implementation 'com.android.support:multidex:1.0.3'
     implementation "com.android.support:support-v4:$rootProject.ext.dependencies.support_version"
-    implementation 'com.android.support:support-v4:27.1.1'
+    implementation "com.android.support:support-v4:$rootProject.ext.dependencies.support_version"
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

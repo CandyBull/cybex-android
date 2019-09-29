@@ -137,7 +137,7 @@ public class DepositWithdrawRecordOldAdapter extends RecyclerView.Adapter<Recycl
 
     private void loadImage(String quoteId, ImageView mCoinSymbol) {
         String quoteIdWithUnderLine = quoteId.replaceAll("\\.", "_");
-        Picasso.get().load("https://app.cybex.io/icons/" + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
+        Picasso.get().load(Constant.ICON_SERVER + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
     }
 
     private String getStateString(String state) {

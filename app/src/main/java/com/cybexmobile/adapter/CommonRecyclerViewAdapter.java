@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.cybex.basemodule.constant.Constant;
 import com.cybexmobile.R;
 import com.cybexmobile.activity.lockassets.LockAssetsActivity;
 import com.cybex.provider.graphene.chain.AssetObject;
@@ -131,7 +132,7 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
 
     private void loadImage(String quoteId, ImageView mCoinSymbol) {
         String quoteIdWithUnderLine = quoteId.replaceAll("\\.", "_");
-        Picasso.get().load("https://app.cybex.io/icons/" + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
+        Picasso.get().load(Constant.ICON_SERVER + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
     }
 
 }

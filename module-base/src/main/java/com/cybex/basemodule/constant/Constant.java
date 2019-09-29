@@ -90,10 +90,10 @@ public class Constant {
     /**
      *  币ID
      */
-    public static final String ASSET_ID_ETH = "1.3.2";
+    public static final String ASSET_ID_ETH = "1.3.1430";
     public static final String ASSET_ID_CYB = "1.3.0";
-    public static final String ASSET_ID_USDT = "1.3.27";
-    public static final String ASSET_ID_BTC = "1.3.3";
+    public static final String ASSET_ID_USDT = "1.3.1431";
+    public static final String ASSET_ID_BTC = "1.3.1429";
 
     /**
      * 币ID_TEST
@@ -116,6 +116,7 @@ public class Constant {
     public static final String ASSET_SYMBOL_CYB = "CYB";
     public static final String ASSET_SYMBOL_USDT = "USDT";
     public static final String ASSET_SYMBOL_BTC = "BTC";
+    public static final String ASSET_SYMBOL_CANDY = "CANDY";
 
     /**
      * intent request and result code
@@ -188,4 +189,9 @@ public class Constant {
      * Sentry DSN
      */
     public static final String SENTRY_DSN = "http://c2f37801e6c94a8099cba56390a4409b@120.27.16.142:9000/16";
+
+    /**
+     * Candy Bull icon server host
+     */
+    public static final String ICON_SERVER = "https://app.candybull.io/icons/";
 }

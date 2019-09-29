@@ -258,8 +258,8 @@ public class MarketsActivity extends BaseActivity {
         mDurationSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                view.setTextColor(getResources().getColor(R.color.btn_orange_end));
-                view.setArrowColor(getResources().getColor(R.color.btn_orange_end));
+                view.setTextColor(getResources().getColor(R.color.btn_blue_primary_end));
+                view.setArrowColor(getResources().getColor(R.color.btn_blue_primary_end));
                 mIndexHeaderLayout.setVisibility(View.GONE);
                 mLayoutBaseHeader.setVisibility(View.VISIBLE);
                 mProgressBar.setVisibility(View.VISIBLE);
@@ -276,8 +276,8 @@ public class MarketsActivity extends BaseActivity {
         mMaSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                view.setTextColor(getResources().getColor(R.color.btn_orange_end));
-                view.setArrowColor(getResources().getColor(R.color.btn_orange_end));
+                view.setTextColor(getResources().getColor(R.color.btn_blue_primary_end));
+                view.setArrowColor(getResources().getColor(R.color.btn_blue_primary_end));
                 if (mData != null) {
                     changeIndexLine(item);
                 }

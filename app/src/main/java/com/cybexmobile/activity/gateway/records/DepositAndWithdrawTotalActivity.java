@@ -118,8 +118,8 @@ public class DepositAndWithdrawTotalActivity extends AppBaseActivity implements 
                 } else {
                     mCurrentFundType = null;
                 }
-                view.setTextColor(getResources().getColor(R.color.btn_orange_end));
-                view.setArrowColor(getResources().getColor(R.color.btn_orange_end));
+                view.setTextColor(getResources().getColor(R.color.btn_blue_primary_end));
+                view.setArrowColor(getResources().getColor(R.color.btn_blue_primary_end));
 
                 if (mAccountObject == null) {
                     return;
@@ -211,8 +211,8 @@ public class DepositAndWithdrawTotalActivity extends AppBaseActivity implements 
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
                 mRefreshLayout.setNoMoreData(false);
                 showLoadDialog(true);
-                view.setTextColor(getResources().getColor(R.color.btn_orange_end));
-                view.setArrowColor(getResources().getColor(R.color.btn_orange_end));
+                view.setTextColor(getResources().getColor(R.color.btn_blue_primary_end));
+                view.setArrowColor(getResources().getColor(R.color.btn_blue_primary_end));
                 if (!item.equals(getResources().getString(R.string.withdraw_all))) {
                     mCurrentCurrency = item;
                 } else {

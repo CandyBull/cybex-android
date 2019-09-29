@@ -201,7 +201,9 @@ public class OrdersHistoryFragment extends BaseFragment implements OnRefreshList
             item.quoteAsset = assetsPair.getQuoteAsset();
             mOrderHistoryItems.add(item);
         }
-        mLastOrderId = mOrderHistoryItems.get(mOrderHistoryItems.size() - 1).limitOrder.order_id.toString();
+        if (!mOrderHistoryItems.isEmpty()) {
+            mLastOrderId = mOrderHistoryItems.get(mOrderHistoryItems.size() - 1).limitOrder.order_id.toString();
+        }
     }
 
     private void loadLastOrderId() {

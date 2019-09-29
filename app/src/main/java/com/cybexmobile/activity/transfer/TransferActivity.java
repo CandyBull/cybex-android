@@ -402,7 +402,7 @@ public class TransferActivity extends BaseActivity implements
             mMsTransferLockTime.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
                 @Override
                 public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                    view.setTextColor(getResources().getColor(R.color.btn_orange_end));
+                    view.setTextColor(getResources().getColor(R.color.btn_blue_primary_end));
                     mLockTimeUnit = getTimeUnit(item);
                     if (mEtTransferLockTime.getText() != null && !mEtTransferLockTime.getText().toString().isEmpty()) {
                         mTotalLockTime = (int) Double.parseDouble(mEtTransferLockTime.getText().toString().trim())

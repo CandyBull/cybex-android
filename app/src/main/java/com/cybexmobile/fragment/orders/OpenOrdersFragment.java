@@ -62,6 +62,7 @@ import io.enotes.sdk.core.CardManager;
 import io.enotes.sdk.utils.ReaderUtils;
 
 import static android.content.Context.BIND_AUTO_CREATE;
+import static com.cybex.basemodule.constant.Constant.ASSET_SYMBOL_CANDY;
 import static com.cybex.basemodule.constant.Constant.BUNDLE_SAVE_IS_LOAD_ALL;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_IS_LOAD_ALL;
 import static com.cybex.provider.graphene.chain.Operations.ID_CANCEL_ALL_OPERATION;
@@ -240,7 +241,7 @@ public class OpenOrdersFragment extends BaseFragment implements OpenOrderRecycle
         mCancelLimitOrderFeeObject = event.getFee();
         AccountBalanceObject accountBalance = getBalance(mCancelLimitOrderFeeObject.asset_id, mFullAccount);
         if (mCancelLimitOrderFeeObject.asset_id.equals(ASSET_ID_CYB)) {
-            if (accountBalance.balance >= mCancelLimitOrderFeeObject.amount) {//cyb足够扣手续费
+            if ( accountBalance != null && accountBalance.balance >= mCancelLimitOrderFeeObject.amount) {//cyb足够扣手续费
                 limitOrderCancelConfirm(mName, mCancelLimitOrderFeeObject);
             } else { //cyb不够扣手续费 扣取委单的base或者quote
                 if (ASSET_ID_CYB.equals(mCurrOpenOrderItem.isSell ? mCurrOpenOrderItem.quoteAsset.id.toString() : mCurrOpenOrderItem.baseAsset.id.toString())) {
@@ -253,7 +254,7 @@ public class OpenOrdersFragment extends BaseFragment implements OpenOrderRecycle
                 }
             }
         } else {
-            if (accountBalance.balance > mCancelLimitOrderFeeObject.amount) {
+            if (accountBalance != null && accountBalance.balance > mCancelLimitOrderFeeObject.amount) {
                 limitOrderCancelConfirm(mName, mCancelLimitOrderFeeObject);
             } else {
                 hideLoadDialog();
@@ -545,13 +546,13 @@ public class OpenOrdersFragment extends BaseFragment implements OpenOrderRecycle
             item.baseAsset = assetsPair.getBaseAsset();
             item.quoteAsset = assetsPair.getQuoteAsset();
             if (mIsLoadAll) {
-                if ((item.baseAsset.symbol.startsWith("CYB") || item.baseAsset.symbol.startsWith("JADE"))
-                        && (item.quoteAsset.symbol.startsWith("CYB") || item.quoteAsset.symbol.startsWith("JADE"))) {
+                if ((item.baseAsset.symbol.startsWith(ASSET_SYMBOL_CANDY))
+                        && (item.quoteAsset.symbol.startsWith(ASSET_SYMBOL_CANDY))) {
                     mOpenOrderItems.add(item);
                 }
             } else {
-                if ((item.baseAsset.symbol.startsWith("CYB") || item.baseAsset.symbol.startsWith("JADE") || item.baseAsset.symbol.startsWith("ARENA"))
-                        && (item.quoteAsset.symbol.startsWith("CYB") || item.quoteAsset.symbol.startsWith("JADE") || item.quoteAsset.symbol.startsWith("ARENA"))) {
+                if ((item.baseAsset.symbol.startsWith(ASSET_SYMBOL_CANDY) || item.baseAsset.symbol.startsWith("ARENA"))
+                        && (item.quoteAsset.symbol.startsWith(ASSET_SYMBOL_CANDY) || item.quoteAsset.symbol.startsWith("ARENA"))) {
                     mOpenOrderItems.add(item);
                 }
             }

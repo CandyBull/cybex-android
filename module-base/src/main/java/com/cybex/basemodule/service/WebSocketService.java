@@ -480,14 +480,10 @@ public class WebSocketService extends Service {
      * 加载币种白名单
      */
     private void loadAllAssetsPairData(){
-        Observable.zip(loadToppingAssetsPair(), loadAssetsPairData(ASSET_ID_ETH), loadAssetsPairData(ASSET_ID_CYB),
-                loadAssetsPairData(ASSET_ID_USDT), loadAssetsPairData(ASSET_ID_BTC), loadPairsConfig(), loadAssetWhiteList(),
-                (assetsPairToppingResponses, assetsPairs1, assetsPairs2, assetsPairs3, assetsPairs4, assetPairsConfig, assetWhites) -> {
+        Observable.zip(loadToppingAssetsPair(), loadAssetsPairData(ASSET_ID_USDT), loadPairsConfig(), loadAssetWhiteList(),
+                (assetsPairToppingResponses, assetsPairs1, assetPairsConfig, assetWhites) -> {
                     mAssetWhiteList.addAll(assetWhites);
                     mAssetPairsConfig = assetPairsConfig;
-                    assetsPairs1.putAll(assetsPairs2);
-                    assetsPairs1.putAll(assetsPairs3);
-                    assetsPairs1.putAll(assetsPairs4);
                     if(assetsPairToppingResponses != null && assetsPairToppingResponses.size() > 0){
                         for(AssetsPairToppingResponse toppingResponse : assetsPairToppingResponses){
                             List<String> quotes = toppingResponse.getQuotes();
@@ -516,9 +512,9 @@ public class WebSocketService extends Service {
 
                 @Override
                 public void onNext(Map<String,List<AssetsPair>> assetsPairMap) {
-                    if (mIsOfficialServer) {
-                        assetsPairMap.putAll(loadContestGameData());
-                    }
+//                    if (mIsOfficialServer) {
+//                        assetsPairMap.putAll(loadContestGameData());
+//                    }
                     mAssetsPairHashMap.putAll(assetsPairMap);
                     Set<String> assetsIds = new HashSet<>();
                     for (Map.Entry<String, List<AssetsPair>> entry : mAssetsPairHashMap.entrySet()){

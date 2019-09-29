@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cybex.basemodule.adapter.viewholder.EmptyViewHolder;
+import com.cybex.basemodule.constant.Constant;
 import com.cybex.basemodule.utils.AssetUtil;
 import com.cybex.basemodule.utils.DateUtils;
 import com.cybex.provider.graphene.chain.AssetObject;
@@ -129,7 +130,7 @@ public class HashLockUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private void loadImage(String quoteId, ImageView mCoinSymbol) {
         String quoteIdWithUnderLine = quoteId.replaceAll("\\.", "_");
-        Picasso.get().load("https://app.cybex.io/icons/" + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
+        Picasso.get().load(Constant.ICON_SERVER + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
     }
 
     private String getAlgorithm(double number) {

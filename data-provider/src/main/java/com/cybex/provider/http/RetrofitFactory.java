@@ -15,13 +15,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitFactory {
 
     //cybex正式服务器
-    private static final String cybex_base_url = "https://app.cybex.io/";
+    public static final String cybex_base_url = "https://app.candybull.io/";
     //cybex测试服务器
-    private static final String cybex_base_url_test = "http://47.100.98.113:3039/";
+    private static final String cybex_base_url_test = "https://app.candybull.io/";
     //faucet正式服务器
     private static final String faucet_base_url = "https://faucet.cybex.io/";
     //faucet测试服务器
-    private static final String faucet_base_url_test = "https://faucet.51nebula.com/";
+    private static final String faucet_base_url_test = "https://faucet.candybull.io/";
     //网关测试正式服务器
     private static final String gateway_base_url = "https://gateway-query.cybex.io/";
     //网关测试测试服务器 暂无

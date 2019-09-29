@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.cybex.basemodule.adapter.viewholder.EmptyViewHolder;
 import com.cybex.basemodule.cache.AssetPairCache;
+import com.cybex.basemodule.constant.Constant;
 import com.cybex.basemodule.utils.DateUtils;
 import com.cybex.provider.graphene.chain.AssetsPair;
 import com.cybex.provider.graphene.chain.LimitOrder;
@@ -73,8 +74,8 @@ public class OrdersHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
             double price;
             double sold;
             double received;
-            if ((!baseAsset.symbol.startsWith("CYB") && !baseAsset.symbol.startsWith("JADE") && !baseAsset.symbol.startsWith("ARENA")) ||
-                    (!quoteAsset.symbol.startsWith("CYB") && !quoteAsset.symbol.startsWith("JADE") && !quoteAsset.symbol.startsWith("ARENA"))) {
+            if ((!baseAsset.symbol.startsWith(Constant.ASSET_SYMBOL_CANDY) && !baseAsset.symbol.startsWith("ARENA")) ||
+                    (!quoteAsset.symbol.startsWith(Constant.ASSET_SYMBOL_CANDY) && !quoteAsset.symbol.startsWith("ARENA"))) {
                 RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
                 layoutParams.height = 0;
                 layoutParams.width = 0;

@@ -50,9 +50,9 @@
     <string name="text_address_management">地址管理</string>
     <string name="text_coin_age">币龄</string>
     <string name="text_coin_age_with_colon">币龄:</string>
-    <string name="text_coin_age_dialog_content"><Data><![CDATA[基于Cybex账户中的CYB持币历史情况，计算得出账户币龄，每天的UTC0点更新。<br>
+    <string name="text_coin_age_dialog_content"><Data><![CDATA[基于CandyBull账户中的CYB持币历史情况，计算得出账户币龄，每天的UTC0点更新。<br>
 
-<font color="#fe9b55">计算规则</font><br>
+<font color="#2ed8d8">计算规则</font><br>
 以Cybex交易所上线为起始日期；<br>
 
 币龄=前一天的币龄*折旧系数（X=0.975）+当天CYB持仓量；<br>
@@ -150,7 +150,7 @@
     <string name="permission_rationale">提供电子邮件完成需要联系人权限.</string>
     <string name="setting_version_is_the_latest">当前为最新版本</string>
     <string name="setting_version_update_available">版本更新</string>
-    <string name="setting_version_update_content">新版CybexDex可用，请立即更新至最新版本.</string>
+    <string name="setting_version_update_content">新版CandyBullDex可用，请立即更新至最新版本.</string>
     <string name="setting_version_update_next_time">下次</string>
     <string name="setting_version_update_now">更新</string>
     <string name="setting_frequency_ordinary_market">普通行情</string>

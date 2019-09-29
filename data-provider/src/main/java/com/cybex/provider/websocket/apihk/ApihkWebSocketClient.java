@@ -42,7 +42,7 @@ public class ApihkWebSocketClient extends WebSocketListener {
 
     private static final String TAG = ApihkWebSocketClient.class.getSimpleName();
 
-    private static final String APIHK_SERVER = "wss://apihk.cybex.io";
+    private static final String APIHK_SERVER = "wss://normal-hongkong.cybex.io";
 
     private static final int WHAT_MESSAGE = 10000002;
 

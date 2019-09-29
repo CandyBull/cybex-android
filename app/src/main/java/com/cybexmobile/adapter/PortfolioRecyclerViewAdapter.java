@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cybex.basemodule.adapter.viewholder.EmptyViewHolder;
+import com.cybex.basemodule.constant.Constant;
 import com.cybexmobile.data.item.AccountBalanceObjectItem;
 import com.cybexmobile.R;
 import com.cybex.provider.graphene.chain.AccountBalanceObject;
@@ -112,7 +113,7 @@ public class PortfolioRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     private void loadImage(String quoteId, ImageView mCoinSymbol) {
         String quoteIdWithUnderLine = quoteId.replaceAll("\\.", "_");
-        Picasso.get().load("https://app.cybex.io/icons/" + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
+        Picasso.get().load(Constant.ICON_SERVER + quoteIdWithUnderLine + "_grey.png").into(mCoinSymbol);
     }
 
 }

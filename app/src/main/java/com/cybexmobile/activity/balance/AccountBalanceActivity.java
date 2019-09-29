@@ -237,7 +237,7 @@ public class AccountBalanceActivity extends BaseActivity {
             return;
         }
         for (AssetRmbPrice assetRmbPrice : assetRmbPrices) {
-            if (ASSET_SYMBOL_CYB.equals(assetRmbPrice.getName())) {
+            if (ASSET_SYMBOL_USDT.equals(assetRmbPrice.getName())) {
                 double cybRmbPrice = assetRmbPrice.getValue();
                 setTotalCybAndRmbTextView(mTotalRmbPrice / cybRmbPrice,  mTotalRmbPrice);
                 break;
@@ -328,7 +328,7 @@ public class AccountBalanceActivity extends BaseActivity {
              * java.lang.NullPointerException: Attempt to invoke virtual method
              * 'double com.cybex.provider.http.entity.AssetRmbPrice.getValue()' on a null object reference
              */
-            AssetRmbPrice assetRmbPrice = mWebSocketService.getAssetRmbPrice(ASSET_SYMBOL_CYB);
+            AssetRmbPrice assetRmbPrice = mWebSocketService.getAssetRmbPrice(ASSET_SYMBOL_USDT);
             if(assetRmbPrice != null){
                 mTotalCybPrice = (mTotalRmbPrice / assetRmbPrice.getValue());
             }

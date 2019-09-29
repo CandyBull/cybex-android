@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cybex.basemodule.cache.AssetPairCache;
+import com.cybex.basemodule.constant.Constant;
 import com.cybex.basemodule.utils.AssetUtil;
 import com.cybex.provider.graphene.chain.AssetsPair;
 import com.cybexmobile.R;
@@ -65,8 +66,8 @@ public class TradeHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         if (base != null && quote != null) {
             AssetsPair.Config assetPairConfig = AssetPairCache.getInstance().getAssetPairConfig(base.id.toString(), quote.id.toString());
             if(assetPairConfig == null) throw new NullPointerException("AssetsPair.Config can't null");
-            if ((!base.symbol.startsWith("CYB") && !base.symbol.startsWith("JADE") && !base.symbol.startsWith("ARENA")) ||
-                    (!quote.symbol.startsWith("CYB") && !quote.symbol.startsWith("JADE") && !quote.symbol.startsWith("ARENA"))) {
+            if ((!base.symbol.startsWith(Constant.ASSET_SYMBOL_CANDY) && !base.symbol.startsWith("ARENA")) ||
+                    (!quote.symbol.startsWith(Constant.ASSET_SYMBOL_CANDY) && !quote.symbol.startsWith("ARENA"))) {
                 RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
                 layoutParams.height = 0;
                 layoutParams.width = 0;

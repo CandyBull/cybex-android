@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cybex.basemodule.adapter.viewholder.EmptyViewHolder;
+import com.cybex.basemodule.constant.Constant;
 import com.cybexmobile.R;
 import com.cybexmobile.activity.address.WithdrawAddressManagerActivity;
 import com.cybexmobile.faucet.DepositAndWithdrawObject;
@@ -121,7 +122,7 @@ public class DepositAndWithdrawAdapter extends RecyclerView.Adapter<RecyclerView
     private void loadImage(String quoteId, ImageView mCoinSymbol) {
         String quoteIdWithUnderLine = quoteId.replaceAll("\\.", "_");
         Picasso.get()
-                .load("https://app.cybex.io/icons/" + quoteIdWithUnderLine + "_grey.png")
+                .load(Constant.ICON_SERVER + quoteIdWithUnderLine + "_grey.png")
                 .into(mCoinSymbol);
     }
 
