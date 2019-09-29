@@ -80,7 +80,7 @@
 
     <!-- Balance Page -->
     <string name="balance_page_title">我的资产</string>
-    <string name="balance_page_total_balance">账户资产估值(CYB)</string>
+    <string name="balance_page_total_balance">账户资产估值(USDT)</string>
     <string name="balance_page_transfer">转账</string>
     <string name="balance_page_use">使用</string>
     <string name="balance_page_no_asset">暂无资产</string>

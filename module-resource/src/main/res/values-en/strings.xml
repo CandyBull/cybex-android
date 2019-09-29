@@ -74,7 +74,7 @@ If user C purchases 10,000 CYB and sells it the same day, coin age = 10000; Afte
 
     <!-- Balance Page -->
     <string name="balance_page_title">My Balance</string>
-    <string name="balance_page_total_balance">Your Total Balance(CYB)</string>
+    <string name="balance_page_total_balance">Your Total Balance(USDT)</string>
     <string name="balance_page_transfer">Transfer</string>
     <string name="balance_page_use">Deploy</string>
     <string name="balance_page_no_asset">No Asset</string>
