@@ -66,7 +66,7 @@ import static com.cybexmobile.activity.markets.MarketsActivity.RESULT_CODE_BACK;
 public class BottomNavigationActivity extends BaseActivity implements
         WatchlistFragment.OnListFragmentInteractionListener {
 
-    private BottomNavigationView mBottomNavigationView;
+    public BottomNavigationView mBottomNavigationView;
     private static final String KEY_BOTTOM_NAVIGATION_VIEW_SELECTED_ID = "KEY_BOTTOM_NAVIGATION_VIEW_SELECTED_ID";
     private static final int REQUEST_CODE_BACK = 1;
 
@@ -311,7 +311,7 @@ public class BottomNavigationActivity extends BaseActivity implements
      *
      * @param resId
      */
-    private void showFragment(int resId) {
+    public void showFragment(int resId) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (mWatchListFragment != null && mWatchListFragment.isAdded()) {

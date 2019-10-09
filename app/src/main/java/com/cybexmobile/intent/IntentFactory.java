@@ -8,6 +8,7 @@ import com.cybex.eto.activity.details.EtoDetailsActivity;
 import com.cybexmobile.activity.game.GameActivity;
 import com.cybexmobile.activity.gateway.GatewayActivity;
 import com.cybexmobile.activity.login.LoginActivity;
+import com.cybexmobile.activity.main.BottomNavigationActivity;
 import com.cybexmobile.activity.transfer.TransferActivity;
 import com.cybexmobile.activity.web.WebActivity;
 import com.github.mikephil.charting.charts.Chart;
@@ -23,7 +24,7 @@ public class IntentFactory {
 
     private static final String PREFIX_HTTP = "http://";
     private static final String PREFIX_HTTPS = "https://";
-    private static final String PREFIX_APP = "cybexapp://";
+    private static final String PREFIX_APP = "candybull://";
     private static final int ACTION_INVALID = 0;
     private static final int ACTION_HTTP = 1;
     private static final int ACTION_APP = 2;
@@ -171,7 +172,8 @@ public class IntentFactory {
 
         }
         if (urlSplit.length == 2) {
-            throw new Exception("------------------url mapping failed------------------");
+//            throw new Exception("------------------url mapping failed------------------");
+            return BottomNavigationActivity.class;
         }
         if (urlSplit.length == 3 && urlCache.contains("eto/project")) {
             param.put(INTENT_PARAM_ETO_PROJECT_ID, urlSplit[2]);

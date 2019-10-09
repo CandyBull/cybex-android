@@ -86,9 +86,12 @@ public class TestSort {
 //        Integer value = map.remove(4);
 //        System.out.println(value);
 
-        BigDecimal bigDecimal1 = new BigDecimal("123456789");
-        BigDecimal bigDecimal2 = new BigDecimal("100000");
-        System.out.println(bigDecimal1.divide(bigDecimal2, 16, RoundingMode.DOWN).doubleValue());
+//        BigDecimal bigDecimal1 = new BigDecimal("123456789");
+//        BigDecimal bigDecimal2 = new BigDecimal("100000");
+//        System.out.println(bigDecimal1.divide(bigDecimal2, 16, RoundingMode.DOWN).doubleValue());
+        String a = "jade";
+        String[] array = a.split("\\.");
+        System.out.println(array[0]);
 
 
 //        NumberFormat format = NumberFormat.getInstance();

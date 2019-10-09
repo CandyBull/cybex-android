@@ -28,7 +28,7 @@ public interface MainHttpApi {
     Observable<CybexBaseResponse<List<HotAssetPair>>> getHotAssetPairs();
 
     @GET("v1/api/app_sublinks")
-    Observable<CybexBaseResponse<List<SubLink>>> getSubLinks(@Query("lang") String lang, @Query("env") String env);
+    Observable<CybexBaseResponse<List<SubLink>>> getSubLinks(@Query("lang") String lang);
 
     @GET("v1/api/banners")
     Observable<CybexBaseResponse<List<CybexBanner>>> getBanners(@Query("lang") String lang);

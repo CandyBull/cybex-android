@@ -347,10 +347,7 @@ public class AccountBalanceActivity extends BaseActivity {
             return;
         }
         if (item.assetObject != null) {
-            if (item.accountBalanceObject.asset_type.toString().equals(ASSET_ID_CYB)) {
-                AssetRmbPrice assetRmbPrice = mWebSocketService.getAssetRmbPrice(ASSET_SYMBOL_CYB);
-                item.balanceItemRmbPrice = assetRmbPrice == null ? 0 : assetRmbPrice.getValue();
-            } else if (item.accountBalanceObject.asset_type.toString().equals(ASSET_ID_ETH)) {
+            if (item.accountBalanceObject.asset_type.toString().equals(ASSET_ID_ETH)) {
                 AssetRmbPrice assetRmbPrice = mWebSocketService.getAssetRmbPrice(ASSET_SYMBOL_ETH);
                 item.balanceItemRmbPrice = assetRmbPrice == null ? 0 : assetRmbPrice.getValue();
             } else if (item.accountBalanceObject.asset_type.toString().equals(ASSET_ID_USDT)) {

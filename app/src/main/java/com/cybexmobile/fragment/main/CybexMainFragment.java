@@ -34,6 +34,7 @@ import com.cybex.basemodule.event.Event;
 import com.cybex.basemodule.help.StoreLanguageHelper;
 import com.cybex.basemodule.service.WebSocketService;
 import com.cybex.basemodule.utils.AssetUtil;
+import com.cybex.eto.fragment.EtoFragment;
 import com.cybex.eto.utils.PicassoImageLoader;
 import com.cybex.provider.http.entity.Announce;
 import com.cybex.provider.http.entity.AssetRmbPrice;
@@ -44,6 +45,7 @@ import com.cybex.provider.market.WatchlistData;
 import com.cybexmobile.R;
 
 import com.cybex.basemodule.base.BaseFragment;
+import com.cybexmobile.activity.main.BottomNavigationActivity;
 import com.cybexmobile.activity.web.WebActivity;
 import com.cybexmobile.adapter.HotAssetPairRecyclerViewAdapter;
 import com.cybexmobile.adapter.SubLinkRecyclerViewAdapter;
@@ -327,6 +329,9 @@ public class CybexMainFragment extends AppBaseFragment implements CybexMainMvpVi
 
                 }
             }, null, null);
+        } else if (subLink.getLink().equals("candybull://eto/home")) {
+            ((BottomNavigationActivity)getActivity()).showFragment(R.id.navigation_eto);
+            ((BottomNavigationActivity)getActivity()).mBottomNavigationView.setSelectedItemId(R.id.navigation_eto);
         } else {
             new IntentFactory()
                     .action(subLink.getLink())

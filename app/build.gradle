@@ -45,16 +45,16 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            outputFileName = "Cybex_${defaultConfig.versionName}_${variant.flavorName}_${variant.buildType.name}_${getCurrTime()}.apk"
+            outputFileName = "CandyBull_${defaultConfig.versionName}_${variant.flavorName}_${variant.buildType.name}_${getCurrTime()}.apk"
         }
     }
 
     defaultConfig {
-        applicationId "com.cybexmobile"
+        applicationId "com.candybull"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 107
-        versionName "1.10.7"
+        versionCode 1
+        versionName "1.0.0"
         multiDexEnabled true
 
         javaCompileOptions {

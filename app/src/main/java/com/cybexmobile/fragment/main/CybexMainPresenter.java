@@ -94,7 +94,7 @@ public class CybexMainPresenter<T extends CybexMainMvpView> extends BasePresente
         mCompositeDisposable.add(RetrofitFactory
                 .getInstance()
                 .apiMain()
-                .getSubLinks(lang, env)
+                .getSubLinks(lang)
                 .retry()
                 .map(new Function<CybexBaseResponse<List<SubLink>>, List<SubLink>>() {
                     @Override
