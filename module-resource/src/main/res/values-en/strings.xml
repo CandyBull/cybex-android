@@ -8,7 +8,7 @@
     <string name="title_account">Account</string>
     <string name="title_faq">Application</string>
     <string name="title_exchange">Exchange</string>
-    <string name="title_eto">ETO</string>
+    <string name="title_eto">50% OFF</string>
     <string name="title_transaction_match">Contest</string>
     <string name="title_order_history">Orders</string>
     <string name="title_transfer">Transfer</string>
@@ -488,14 +488,14 @@ If user C purchases 10,000 CYB and sells it the same day, coin age = 10000; Afte
     <string name="withdraw_address_memo">Memo</string>
 
     <!-- Eto -->
-    <string name="text_popular_etos">Popular ETOs</string>
+    <string name="text_popular_etos">Popular 50%OFF</string>
     <string name="text_coming">Coming</string>
     <string name="text_in_progress">In progress</string>
     <string name="text_ended">Ended</string>
     <string name="text_end_of_distance">Left:</string>
     <string name="text_start_of_distance">In:</string>
     <string name="text_finish_of_distance">Ended:</string>
-    <string name="text_no_eto">No ETO</string>
+    <string name="text_no_eto">No 50%OFF</string>
     <string name="text_no_record">No Record</string>
     <string name="text_less_than_minute">Less than 1 minute</string>
 
@@ -503,11 +503,11 @@ If user C purchases 10,000 CYB and sells it the same day, coin age = 10000; Afte
     <string name="ETO_details_title">Project Details</string>
     <string name="ETO_details_user_agreement">《User Agreement》</string>
     <string name="ETO_details_get_white_list">Get Whitelist</string>
-    <string name="ETO_details_eto_details">ETO Details</string>
+    <string name="ETO_details_eto_details">50%OFF Details</string>
     <string name="ETO_details_project_name">Project Name:</string>
     <string name="ETO_details_token_name">Token Name:</string>
     <string name="ETO_details_total_token_supply">Total Token Supply:</string>
-    <string name="ETO_details_ETO_time">ETO Time:</string>
+    <string name="ETO_details_ETO_time">50%OFF Time:</string>
     <string name="ETO_details_end_at">End at:</string>
     <string name="ETO_details_circulation_on_cybex_start">Circulation on Cybex Starts at:</string>
     <string name="ETO_details_token_releasing_time">Token Releasing Time:</string>
@@ -524,8 +524,8 @@ If user C purchases 10,000 CYB and sells it the same day, coin age = 10000; Afte
     <string name="ETO_details_reserve_now">Reserve Now</string>
     <string name="ETO_details_verifying">verifying</string>
     <string name="ETO_details_stop_reserve">Stop Reserve</string>
-    <string name="ETO_details_waiting_for_ETO">Waiting for ETO</string>
-    <string name="ETO_details_join_eto_now">Join ETO Now</string>
+    <string name="ETO_details_waiting_for_ETO">Waiting for 50%OFF</string>
+    <string name="ETO_details_join_eto_now">Join 50%OFF Now</string>
     <string name="ETO_details_rejected">Rejected</string>
     <string name="ETO_details_toast_message">Please check 《User Agreement》first.</string>
     <string name="ETO_details_dialog_invitation_code">Invitation code</string>
@@ -544,14 +544,14 @@ If user C purchases 10,000 CYB and sells it the same day, coin age = 10000; Afte
     <string name="attend_eto_subscribed">Subscribed</string>
     <string name="attend_eto_quantity">Quantity</string>
     <string name="attend_eto_fee">Fee</string>
-    <string name="attend_eto_join_eto">Join in ETO</string>
+    <string name="attend_eto_join_eto">Join in 50%OFF</string>
     <string name="attend_eto_insufficient_balances">insufficient balances</string>
     <string name="attend_eto_beyond_personal_cap">beyond personal hard cap</string>
     <string name="attend_eto_insufficient_remaining_quota">insufficient remaining quote</string>
     <string name="attend_eto_must_beyond_minimum_purchasing_unit">must beyond minimum purchasing unit</string>
     <string name="attend_eto_must_purchase_an_integer_multiple">must purchase an integer multiple of minimum purchasing unit</string>
-    <string name="attend_eto_dialog_title">ETO Confirm</string>
-    <string name="attend_eto_dialog_message">You will join in ETO of %s</string>
+    <string name="attend_eto_dialog_title">50%OFF Confirm</string>
+    <string name="attend_eto_dialog_message">You will join in 50%OFF of %s</string>
     <string name="attend_eto_dialog_loading_verifying">Verifying</string>
     <string name="attend_eto_dialog_loading_repeat">Do not repeat transfers</string>
     <string name="attend_eto_toast_message_success">Subscription success</string>
@@ -560,14 +560,14 @@ If user C purchases 10,000 CYB and sells it the same day, coin age = 10000; Afte
 
 
     <!-- EtoRecordActivity -->
-    <string name="text_title_eto_records">ETO Records</string>
-    <string name="text_join_eto">Join ETO</string>
+    <string name="text_title_eto_records">50%OFF Records</string>
+    <string name="text_join_eto">Join 50%OFF</string>
     <string name="text_receive_token">Receive Token</string>
     <string name="text_refund">Refund</string>
     <string name="text_invalid_subscription">Invalid Subscription</string>
     <string name="text_subscription_partly_valid">Subscription partly valid</string>
     <string name="text_received_success">Received</string>
-    <string name="text_eto_record_participate">Join ETO</string>
+    <string name="text_eto_record_participate">Join 50%OFF</string>
     <string name="text_eto_record_receive_token">Receive Token</string>
     <string name="text_eto_record_time">Time</string>
 

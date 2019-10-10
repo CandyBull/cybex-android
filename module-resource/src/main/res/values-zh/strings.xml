@@ -9,7 +9,7 @@
     <string name="title_faq">申请</string>
     <string name="title_account">账户</string>
     <string name="title_exchange">交易</string>
-    <string name="title_eto">ETO</string>
+    <string name="title_eto">打新</string>
     <string name="title_transaction_match">大赛</string>
     <string name="title_order_history">委单</string>
     <string name="title_transfer">转账</string>
@@ -510,11 +510,11 @@
     <string name="ETO_details_title">项目详情</string>
     <string name="ETO_details_user_agreement">《用户协议》</string>
     <string name="ETO_details_get_white_list">获取白名单</string>
-    <string name="ETO_details_eto_details">ETO 详情</string>
+    <string name="ETO_details_eto_details">五折打新 详情</string>
     <string name="ETO_details_project_name">项目名称:</string>
     <string name="ETO_details_total_token_supply">代币总量:</string>
     <string name="ETO_details_token_name">代币名称:</string>
-    <string name="ETO_details_ETO_time">ETO时间:</string>
+    <string name="ETO_details_ETO_time">五折打新时间:</string>
     <string name="ETO_details_end_at">结束时间:</string>
     <string name="ETO_details_circulation_on_cybex_start">开放交易时间:</string>
     <string name="ETO_details_token_releasing_time">发币时间:</string>
@@ -531,8 +531,8 @@
     <string name="ETO_details_reserve_now">立即预约</string>
     <string name="ETO_details_verifying">审核中</string>
     <string name="ETO_details_stop_reserve">停止预约</string>
-    <string name="ETO_details_waiting_for_ETO">等待ETO开始</string>
-    <string name="ETO_details_join_eto_now">立即ETO</string>
+    <string name="ETO_details_waiting_for_ETO">等待五折打新开始</string>
+    <string name="ETO_details_join_eto_now">立即五折打新</string>
     <string name="ETO_details_rejected">审核未通过</string>
     <string name="ETO_details_toast_message">请先勾选《用户协议》</string>
     <string name="ETO_details_dialog_invitation_code">输入邀请码</string>
@@ -551,14 +551,14 @@
     <string name="attend_eto_subscribed">已认购额度</string>
     <string name="attend_eto_quantity">金额</string>
     <string name="attend_eto_fee">手续费</string>
-    <string name="attend_eto_join_eto">立即ETO</string>
+    <string name="attend_eto_join_eto">立即五折打新</string>
     <string name="attend_eto_insufficient_balances">余额不足</string>
     <string name="attend_eto_beyond_personal_cap">超出单账号限额</string>
     <string name="attend_eto_insufficient_remaining_quota">剩余可认购额度不足</string>
     <string name="attend_eto_must_beyond_minimum_purchasing_unit">不可低于单笔最低限额</string>
     <string name="attend_eto_must_purchase_an_integer_multiple">认购金额为最小认购单位整数倍</string>
-    <string name="attend_eto_dialog_title">ETO 确认</string>
-    <string name="attend_eto_dialog_message">您将参与 %s 的ETO</string>
+    <string name="attend_eto_dialog_title">五折打新 确认</string>
+    <string name="attend_eto_dialog_message">您将参与 %s 的五折打新</string>
     <string name="attend_eto_dialog_loading_verifying">转账待确认中</string>
     <string name="attend_eto_dialog_loading_repeat">请勿重复转账</string>
     <string name="attend_eto_toast_message_success">认购成功</string>
@@ -567,14 +567,14 @@
 
 
     <!-- EtoRecordActivity -->
-    <string name="text_title_eto_records">ETO 记录</string>
-    <string name="text_join_eto">参与ETO</string>
+    <string name="text_title_eto_records">五折打新 记录</string>
+    <string name="text_join_eto">参与五折打新</string>
     <string name="text_receive_token">收到Token</string>
     <string name="text_refund">退款</string>
     <string name="text_invalid_subscription">无效认购</string>
     <string name="text_subscription_partly_valid">部分有效</string>
     <string name="text_received_success">到账成功</string>
-    <string name="text_eto_record_participate">参与ETO</string>
+    <string name="text_eto_record_participate">参与五折打新</string>
     <string name="text_eto_record_receive_token">收到Token</string>
     <string name="text_eto_record_time">时间</string>
 
