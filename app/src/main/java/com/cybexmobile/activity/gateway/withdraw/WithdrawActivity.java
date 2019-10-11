@@ -37,27 +37,19 @@ import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.cache.normalized.CacheControl;
 import com.apollographql.apollo.fragment.WithdrawinfoObject;
 import com.apollographql.apollo.rx2.Rx2Apollo;
-import com.cybex.basemodule.constant.Constant;
-import com.cybex.provider.SettingConfig;
-import com.cybex.provider.db.DBManager;
-import com.cybex.provider.db.entity.Address;
-import com.cybex.provider.graphene.chain.GlobalConfigObject;
-import com.cybex.provider.http.RetrofitFactory;
-import com.cybex.provider.utils.SpUtil;
-import com.cybex.provider.websocket.MessageCallback;
-import com.cybex.provider.websocket.Reply;
-import com.cybexmobile.R;
-import com.cybexmobile.activity.gateway.records.DepositWithdrawRecordsActivity;
-import com.cybexmobile.activity.address.AddTransferAccountActivity;
-import com.cybex.provider.apollo.ApolloClientApi;
 import com.cybex.basemodule.BitsharesWalletWraper;
 import com.cybex.basemodule.base.BaseActivity;
-import com.cybexmobile.activity.setting.enotes.SetCloudPasswordActivity;
-import com.cybexmobile.data.GatewayLogInRecordRequest;
-import com.cybexmobile.dialog.CommonSelectDialog;
+import com.cybex.basemodule.constant.Constant;
 import com.cybex.basemodule.dialog.CybexDialog;
 import com.cybex.basemodule.dialog.UnlockDialog;
 import com.cybex.basemodule.event.Event;
+import com.cybex.basemodule.service.WebSocketService;
+import com.cybex.basemodule.toastmessage.ToastMessage;
+import com.cybex.basemodule.utils.SoftKeyBoardListener;
+import com.cybex.provider.SettingConfig;
+import com.cybex.provider.apollo.ApolloClientApi;
+import com.cybex.provider.db.DBManager;
+import com.cybex.provider.db.entity.Address;
 import com.cybex.provider.exception.NetworkStatusException;
 import com.cybex.provider.graphene.chain.AccountBalanceObject;
 import com.cybex.provider.graphene.chain.AccountObject;
@@ -68,16 +60,19 @@ import com.cybex.provider.graphene.chain.FullAccountObject;
 import com.cybex.provider.graphene.chain.FullAccountObjectReply;
 import com.cybex.provider.graphene.chain.ObjectId;
 import com.cybex.provider.graphene.chain.Operations;
-import com.cybex.provider.graphene.chain.PrivateKey;
 import com.cybex.provider.graphene.chain.SignedTransaction;
 import com.cybex.provider.graphene.chain.Types;
-import com.cybex.basemodule.service.WebSocketService;
-import com.cybex.basemodule.toastmessage.ToastMessage;
+import com.cybex.provider.http.RetrofitFactory;
+import com.cybex.provider.utils.SpUtil;
+import com.cybex.provider.websocket.MessageCallback;
+import com.cybex.provider.websocket.Reply;
+import com.cybexmobile.R;
+import com.cybexmobile.activity.address.AddTransferAccountActivity;
+import com.cybexmobile.activity.gateway.records.DepositWithdrawRecordsActivity;
+import com.cybexmobile.activity.setting.enotes.SetCloudPasswordActivity;
+import com.cybexmobile.dialog.CommonSelectDialog;
 import com.cybexmobile.shake.AntiShake;
 import com.cybexmobile.utils.DecimalDigitsInputFilter;
-import com.cybex.basemodule.utils.SoftKeyBoardListener;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.greenrobot.eventbus.EventBus;
@@ -88,8 +83,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -101,32 +94,21 @@ import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
 import butterknife.OnTouch;
 import butterknife.Unbinder;
-import io.reactivex.Observable;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 
 import static com.cybex.basemodule.constant.Constant.ASSET_ID_CYB;
-import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_CRYPTO_TAG;
-import static com.cybex.basemodule.constant.Constant.PREF_SERVER;
-import static com.cybex.basemodule.constant.Constant.SERVER_OFFICIAL;
-import static com.cybex.basemodule.constant.Constant.PREF_ADDRESS_TO_PUB_MAP;
-import static com.cybex.basemodule.constant.Constant.PREF_SERVER;
-import static com.cybex.basemodule.constant.Constant.SERVER_OFFICIAL;
-import static com.cybex.provider.graphene.chain.Operations.ID_TRANSER_OPERATION;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_ADDRESS;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_CRYPTO_ID;
-import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_CRYPTO_MEMO;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_CRYPTO_NAME;
+import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_CRYPTO_TAG;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_ITEMS;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_SELECTED_ITEM;
+import static com.cybex.basemodule.constant.Constant.PREF_ADDRESS_TO_PUB_MAP;
+import static com.cybex.provider.graphene.chain.Operations.ID_TRANSER_OPERATION;
 
 public class WithdrawActivity extends BaseActivity {
 
@@ -405,7 +387,6 @@ public class WithdrawActivity extends BaseActivity {
             mIvAddressCheck.setVisibility(View.INVISIBLE);
             mErrorLinearLayout.setVisibility(View.GONE);
         }
-        resetWithdrawBtnState();
     }
 
     @OnTextChanged(value = R.id.withdraw_amount, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)

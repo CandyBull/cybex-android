@@ -27,7 +27,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5b6bfb6da40fa34f04000050" />
+            android:value="5d9fe91b3fc195f737001162" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="unknown" />

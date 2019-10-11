@@ -388,10 +388,11 @@ public class LockAssetsActivity extends BaseActivity implements CommonRecyclerVi
         if (watchlistDataList == null || watchlistDataList.size() == 0) {
             return;
         }
-        if (lockAssetObject.balance.asset_id.toString().equals(ASSET_ID_CYB)) {
-            AssetRmbPrice assetRmbPrice = mWebSocketService.getAssetRmbPrice(ASSET_SYMBOL_CYB);
-            lockAssetItem.itemRmbPrice = assetRmbPrice == null ? 0 : assetRmbPrice.getValue();
-        } else if (lockAssetObject.balance.asset_id.toString().equals(ASSET_ID_ETH)) {
+//        if (lockAssetObject.balance.asset_id.toString().equals(ASSET_ID_CYB)) {
+//            AssetRmbPrice assetRmbPrice = mWebSocketService.getAssetRmbPrice(ASSET_SYMBOL_CYB);
+//            lockAssetItem.itemRmbPrice = assetRmbPrice == null ? 0 : assetRmbPrice.getValue();
+//        } else
+        if (lockAssetObject.balance.asset_id.toString().equals(ASSET_ID_ETH)) {
             AssetRmbPrice assetRmbPrice = mWebSocketService.getAssetRmbPrice(ASSET_SYMBOL_ETH);
             lockAssetItem.itemRmbPrice = assetRmbPrice == null ? 0 : assetRmbPrice.getValue();
         } else if (lockAssetObject.balance.asset_id.toString().equals(ASSET_ID_USDT)) {
