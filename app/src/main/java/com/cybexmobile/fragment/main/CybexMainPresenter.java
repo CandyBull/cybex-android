@@ -38,7 +38,6 @@ public class CybexMainPresenter<T extends CybexMainMvpView> extends BasePresente
                 .getInstance()
                 .apiMain()
                 .getAnnounces(lang)
-                .retry()
                 .map(new Function<CybexBaseResponse<List<Announce>>, List<Announce>>() {
                     @Override
                     public List<Announce> apply(CybexBaseResponse<List<Announce>> baseResponse) {
@@ -133,7 +132,6 @@ public class CybexMainPresenter<T extends CybexMainMvpView> extends BasePresente
                 .getInstance()
                 .apiMain()
                 .getBanners(lang)
-                .retry()
                 .map(new Function<CybexBaseResponse<List<CybexBanner>>, List<CybexBanner>>() {
                     @Override
                     public List<CybexBanner> apply(CybexBaseResponse<List<CybexBanner>> baseResponse) {

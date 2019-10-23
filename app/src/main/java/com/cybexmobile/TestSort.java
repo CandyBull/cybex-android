@@ -89,9 +89,12 @@ public class TestSort {
 //        BigDecimal bigDecimal1 = new BigDecimal("123456789");
 //        BigDecimal bigDecimal2 = new BigDecimal("100000");
 //        System.out.println(bigDecimal1.divide(bigDecimal2, 16, RoundingMode.DOWN).doubleValue());
-        String a = "jade";
-        String[] array = a.split("\\.");
-        System.out.println(array[0]);
+        double a = 2.99090909909;
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMaximumFractionDigits(16);
+        nf.setRoundingMode(RoundingMode.HALF_UP);
+        String rounded = nf.format(a);
+        System.out.println(rounded);
 
 
 //        NumberFormat format = NumberFormat.getInstance();

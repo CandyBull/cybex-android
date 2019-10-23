@@ -298,6 +298,9 @@ public class CybexMainFragment extends AppBaseFragment implements CybexMainMvpVi
 
     @Override
     public void onItemClick(SubLink subLink) {
+        if (subLink == null || subLink.getLink() == null || subLink.getLink().isEmpty()) {
+            return;
+        }
         if (subLink.getLink().equals("https://gamelive.cybex.io") && !mPreferences.getBoolean(Constant.PREF_GAME_INVITATION, false)) {
             CybexDialog.showVerifyPinCodeETODialog(new Dialog(getActivity()), getActivity().getResources().getString(R.string.ETO_details_dialog_invitation_code), new CybexDialog.ConfirmationDialogClickWithButtonTimerListener() {
                 @Override

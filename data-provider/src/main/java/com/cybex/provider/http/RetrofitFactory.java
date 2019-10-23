@@ -29,9 +29,9 @@ public class RetrofitFactory {
     //新网关测试地址
     private static final String gateway_new_base_url_test = "https://gateway2test.cybex.io/";
     //Eto正式服务器
-    private static final String eto_base_url = "https://etoapi.cybex.io/api/";
+    private static final String eto_base_url = "https://etoapi.candybull.io/api/";
     //Eto测试服务器
-    private static final String eto_base_url_test = "https://etoapi.cybex.io/api/";
+    private static final String eto_base_url_test = "https://etoapi-pre.candybull.io/api/";
     //Chat正式服务器
     private static final String chat_base_url = "https://chat.cybex.io/";
     //Chat测式服务器
