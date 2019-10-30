@@ -240,7 +240,7 @@ public class MarketsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadLastMsgID();
+//        loadLastMsgID();
     }
 
     @Override

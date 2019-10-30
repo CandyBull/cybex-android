@@ -52,6 +52,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
 import java.util.Locale;
@@ -62,7 +63,6 @@ import static com.cybex.basemodule.constant.Constant.ASSET_ID_CYB;
 import static com.cybex.basemodule.constant.Constant.ASSET_SYMBOL_CYB;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_ETO_ATTEND_ETO;
 import static com.cybex.provider.graphene.chain.Operations.ID_PARTICIPATE_EXCHANGE_OPERATION;
-import static com.cybex.provider.graphene.chain.Operations.ID_TRANSER_OPERATION;
 
 public class AttendETOActivity extends EtoBaseActivity implements AttendETOView,
         SoftKeyBoardListener.OnSoftKeyBoardChangeListener {
@@ -142,7 +142,7 @@ public class AttendETOActivity extends EtoBaseActivity implements AttendETOView,
         showDataFromEtoProject(mEtoProject);
         mAttendETOPresenter.getUserCurrent(mUserName, mEtoProject.getId());
         mQuantityEt.setFilters(new InputFilter[]{mQuantityFilter});
-        mEtoCalculateFormatTv.setText(String.format("= 0 %s", mIsUseBaseToken ? AssetUtil.parseSymbol(mEtoProject.getUser_buy_token()) : mEtoProject.getBase_token_name()));
+        mEtoCalculateFormatTv.setText(String.format("= 0 %s", mIsUseBaseToken ? AssetUtil.parseSymbol(mEtoProject.getToken_name()) : mEtoProject.getBase_token_name()));
 
     }
 
@@ -327,11 +327,11 @@ public class AttendETOActivity extends EtoBaseActivity implements AttendETOView,
             public void afterTextChanged(Editable s) {
                 String message = s.toString().trim();
                 if (message.length() == 0) {
-                    mEtoCalculateFormatTv.setText(String.format("= 0 %s", mIsUseBaseToken ? AssetUtil.parseSymbol(mEtoProject.getUser_buy_token()) : mEtoProject.getBase_token_name()));
+                    mEtoCalculateFormatTv.setText(String.format("= 0 %s", mIsUseBaseToken ? AssetUtil.parseSymbol(mEtoProject.getToken_name()) : mEtoProject.getBase_token_name()));
                 } else {
                     BigDecimal bigDecimal = new BigDecimal(message);
-                    String value = mIsUseBaseToken ? (bigDecimal.divide(new BigDecimal(String.valueOf(mRate)), RoundingMode.DOWN)).toString() : String.valueOf(new BigDecimal(message).multiply(new BigDecimal(String.valueOf(mRate))));
-                    mEtoCalculateFormatTv.setText(String.format(Locale.ENGLISH, "=%.4f %s", Float.parseFloat(value), mIsUseBaseToken ? AssetUtil.parseSymbol(mEtoProject.getUser_buy_token()) : mEtoProject.getBase_token_name()));
+                    String value = mIsUseBaseToken ? (bigDecimal.divide(new BigDecimal(String.valueOf(mRate)), 16, RoundingMode.DOWN)).toString() : String.valueOf(new BigDecimal(message).multiply(new BigDecimal(String.valueOf(mRate))));
+                    mEtoCalculateFormatTv.setText(String.format(Locale.ENGLISH, "=%.4f %s", Float.parseFloat(value), mIsUseBaseToken ? AssetUtil.parseSymbol(mEtoProject.getToken_name()) : mEtoProject.getBase_token_name()));
                     mValue = value;
                 }
 
@@ -347,11 +347,11 @@ public class AttendETOActivity extends EtoBaseActivity implements AttendETOView,
     }
 
     private void showDataFromEtoProject(EtoProject etoProject) {
-        BigDecimal personalCap = new BigDecimal(String.valueOf(etoProject.getBase_max_quote())).divide(new BigDecimal(String.valueOf(mRate)), RoundingMode.DOWN);
-        BigDecimal minCap = new BigDecimal(String.valueOf(etoProject.getBase_min_quote())).divide(new BigDecimal(String.valueOf(mRate)), RoundingMode.DOWN);
+        BigDecimal personalCap = new BigDecimal(String.valueOf(etoProject.getBase_max_quote())).divide(new BigDecimal(String.valueOf(mRate)), 16, RoundingMode.DOWN);
+        BigDecimal minCap = new BigDecimal(String.valueOf(etoProject.getBase_min_quote())).divide(new BigDecimal(String.valueOf(mRate)), 16,  RoundingMode.DOWN);
         mToolbarTitleTv.setText(String.format("%s %s", etoProject.getName(), "ETO"));
         mPersonalCapTv.setText(String.format(Locale.US, "%s %s", mIsUseBaseToken ? String.valueOf(etoProject.getBase_max_quote()) : String.valueOf(personalCap.doubleValue()), AssetUtil.parseSymbol(etoProject.getUser_buy_token())));
-        mSubscribeUnitTv.setText(String.format("%." + (mIsUseBaseToken ? etoProject.getBase_accuracy() : 1) + "f %s", mIsUseBaseToken ? 1 / Math.pow(10, etoProject.getBase_accuracy()) : etoProject.getQuote_accuracy(), AssetUtil.parseSymbol(etoProject.getUser_buy_token())));
+        mSubscribeUnitTv.setText(String.format(Locale.US,"%s %s", mIsUseBaseToken ? String.valueOf(1 / Math.pow(10, etoProject.getBase_accuracy())) : String.valueOf(etoProject.getQuote_accuracy()), AssetUtil.parseSymbol(etoProject.getUser_buy_token())));
         mMinSubscriptionTv.setText(String.format(Locale.US, "%s %s", mIsUseBaseToken ? String.valueOf(etoProject.getBase_min_quote()) : String.valueOf(minCap.doubleValue()), AssetUtil.parseSymbol(etoProject.getUser_buy_token())));
         if (Locale.getDefault().getLanguage().equals("zh")) {
             mEtoTransferDescriptionTv.setText(etoProject.getAdds_buy_desc());
@@ -359,13 +359,13 @@ public class AttendETOActivity extends EtoBaseActivity implements AttendETOView,
             mEtoTransferDescriptionTv.setText(etoProject.getAdds_buy_desc__lang_en());
         }
         mEtoInputUnitTv.setText(AssetUtil.parseSymbol(etoProject.getUser_buy_token()));
-        mEtoTotalRemainingTv.setText(String.format(Locale.US, "%s %s", mIsUseBaseToken ? String.valueOf(etoProject.getCurrent_remain_quota_count() * mRate) : String.valueOf(etoProject.getCurrent_remain_quota_count()), AssetUtil.parseSymbol(mEtoProject.getUser_buy_token()) ));
+        mEtoTotalRemainingTv.setText(String.format(Locale.US, "%s %s", mIsUseBaseToken ? String.valueOf(AssetUtil.multiply(String.valueOf(etoProject.getCurrent_remain_quota_count()), String.valueOf(mRate))) : String.valueOf(etoProject.getCurrent_remain_quota_count()), AssetUtil.parseSymbol(mEtoProject.getUser_buy_token()) ));
         mUnit = mIsUseBaseToken ? 1 / Math.pow(10, etoProject.getBase_accuracy()) : etoProject.getQuote_accuracy();
     }
 
     private void showSubscribedAmount(EtoUserCurrentStatus etoUserCurrentStatus) {
-        BigDecimal baseMax = mIsUseBaseToken ? new BigDecimal(String.valueOf(mEtoProject.getBase_max_quote())): new BigDecimal(String.valueOf(mEtoProject.getBase_max_quote())).divide(new BigDecimal(String.valueOf(mRate)), RoundingMode.DOWN);
-        BigDecimal currentToken = mIsUseBaseToken ? new BigDecimal(String.valueOf(etoUserCurrentStatus.getCurrent_base_token_count())) : new BigDecimal(String.valueOf(etoUserCurrentStatus.getCurrent_base_token_count())).divide(new BigDecimal(String.valueOf(mRate)), RoundingMode.DOWN);
+        BigDecimal baseMax = mIsUseBaseToken ? new BigDecimal(String.valueOf(mEtoProject.getBase_max_quote())): new BigDecimal(String.valueOf(mEtoProject.getBase_max_quote())).divide(new BigDecimal(String.valueOf(mRate)), 16, RoundingMode.DOWN);
+        BigDecimal currentToken = mIsUseBaseToken ? new BigDecimal(String.valueOf(etoUserCurrentStatus.getCurrent_base_token_count())) : new BigDecimal(String.valueOf(etoUserCurrentStatus.getCurrent_base_token_count())).divide(new BigDecimal(String.valueOf(mRate)), 16, RoundingMode.DOWN);
         mSubscribeTv.setText(String.format(Locale.US, "%s %s", mIsUseBaseToken ? etoUserCurrentStatus.getCurrent_base_token_count() :
                 AssetUtil.divide(etoUserCurrentStatus.getCurrent_base_token_count(), mRate), AssetUtil.parseSymbol(mEtoProject.getUser_buy_token())));
         mRemainingTv.setText(String.format("%s %s", String.valueOf(baseMax.subtract(currentToken).doubleValue()), AssetUtil.parseSymbol(mEtoProject.getUser_buy_token())));
@@ -598,7 +598,7 @@ public class AttendETOActivity extends EtoBaseActivity implements AttendETOView,
             mIsBalanceEnough = false;
             mErrorLinearLayout.setVisibility(View.VISIBLE);
             mErrorTv.setText(getResources().getString(R.string.attend_eto_insufficient_remaining_quota));
-        } else if (amount.doubleValue() % mUnit != 0) {
+        } else if (amount.remainder(new BigDecimal(String.valueOf(mUnit))).doubleValue() != 0) {
             mErrorLinearLayout.setVisibility(View.VISIBLE);
             mErrorTv.setText(getResources().getString(R.string.attend_eto_must_purchase_an_integer_multiple));
         } else {

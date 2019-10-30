@@ -9,10 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cybex.basemodule.base.BasePresenter;
+import com.cybex.basemodule.utils.DateUtils;
 import com.cybex.provider.graphene.chain.GlobalConfigObject;
 import com.cybex.provider.http.RetrofitFactory;
 import com.cybex.provider.http.entity.EtoErrorMsgResponse;
 import com.cybex.provider.http.entity.EtoProject;
+import com.cybex.provider.http.entity.EtoProjectStatus;
 import com.cybex.provider.http.entity.EtoProjectUserDetails;
 import com.cybex.provider.http.entity.EtoRegisterProjectRequest;
 import com.cybex.provider.http.entity.EtoUserCurrentStatus;
@@ -30,7 +32,10 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -88,7 +93,7 @@ public class EtoDetailsPresenter<V extends EtoDetailsView> extends BasePresenter
     }
 
     public void loadDetailsWithUserStatus(final EtoProject etoProject, final String userName) {
-        mCompositeDisposable.add( Flowable.interval(0, 1, TimeUnit.SECONDS)
+        mCompositeDisposable.add( Flowable.interval(0, 3, TimeUnit.SECONDS)
                 .flatMap(new Function<Long, Publisher<EtoBaseResponse<EtoUserStatus>>>() {
                     @Override
                     public Publisher<EtoBaseResponse<EtoUserStatus>> apply(Long aLong) throws Exception {
@@ -116,6 +121,62 @@ public class EtoDetailsPresenter<V extends EtoDetailsView> extends BasePresenter
                             message = response.getResult();
                         }
                         getMvpView().onErrorUser(message);
+                    }
+                }));
+    }
+
+    public void refreshProjectStatusOk(final EtoProject etoProject) {
+        mCompositeDisposable.add(Flowable.interval(3, 3, TimeUnit.SECONDS)
+                .flatMap(new Function<Long, Publisher<EtoBaseResponse<EtoProjectStatus>>>() {
+                    @Override
+                    public Publisher<EtoBaseResponse<EtoProjectStatus>> apply(Long aLong) {
+                        if (etoProject.getStatus().equals(EtoProject.Status.PRE)) {
+                            Log.v("project status change", DateUtils.timeDistance(System.currentTimeMillis(), DateUtils.formatToMillsETO(etoProject.getStart_at())) + "");
+                        }
+                        if (etoProject.getStatus().equals(EtoProject.Status.PRE) &&
+                                DateUtils.timeDistance(System.currentTimeMillis(), DateUtils.formatToMillsETO(etoProject.getStart_at())) > 3000) {
+                            Log.v("project status change", "refresh project time~~~~~" + etoProject.getId());
+                            return Flowable.create(new FlowableOnSubscribe<EtoBaseResponse<EtoProjectStatus>>() {
+                                @Override
+                                public void subscribe(FlowableEmitter<EtoBaseResponse<EtoProjectStatus>> e) throws Exception {
+                                    e.onNext(new EtoBaseResponse<EtoProjectStatus>(0, null));
+                                    e.onComplete();
+                                }
+                            }, BackpressureStrategy.DROP);
+                        }
+                        if (etoProject.getStatus().equals(EtoProject.Status.PRE)) {
+                            Log.v("project status change", "refresh project status-----" + etoProject.getId());
+                        }
+                        return RetrofitFactory.getInstance().apiEto().refreshProjectStatus(etoProject.getId());
+                    }
+                })
+                .map(new Function<EtoBaseResponse<EtoProjectStatus>, EtoProject>() {
+                    @Override
+                    public EtoProject apply(EtoBaseResponse<EtoProjectStatus> etoBaseResponse) {
+                        Log.v("project status change", "refresh project status-----" + etoProject.getId());
+                        EtoProjectStatus etoProjectStatus = etoBaseResponse.getResult();
+                        if (etoProjectStatus != null) {
+                            etoProject.setCurrent_percent(etoProjectStatus.getCurrent_percent());
+                            etoProject.setCurrent_base_token_count(etoProjectStatus.getCurrent_base_token_count());
+                            etoProject.setCurrent_remain_quota_count(etoProjectStatus.getCurrent_remain_quota_count());
+                            etoProject.setCurrent_user_count(etoProjectStatus.getCurrent_user_count());
+                            etoProject.setStatus(etoProjectStatus.getStatus());
+                            etoProject.setFinish_at(etoProjectStatus.getFinish_at());
+                        }
+                        return etoProject;
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<EtoProject>() {
+                    @Override
+                    public void accept(EtoProject project) throws Exception {
+                        getMvpView().onRefreshEtoProjectStatus(project);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
                     }
                 }));
     }

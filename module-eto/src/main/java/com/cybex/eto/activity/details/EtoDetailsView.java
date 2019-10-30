@@ -16,4 +16,5 @@ public interface EtoDetailsView extends IMvpView {
     void onRegisterSuccess(Dialog dialog);
     void onLoadEtoProject(EtoProject etoProject);
     void onErrorUser(String message);
+    void onRefreshEtoProjectStatus(EtoProject etoProject);
 }

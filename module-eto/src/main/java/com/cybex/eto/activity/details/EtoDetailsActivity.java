@@ -112,6 +112,7 @@ public class EtoDetailsActivity extends EtoBaseActivity implements EtoDetailsVie
         setOnclickListener();
         mEtoProject = (EtoProject) getIntent().getSerializableExtra(INTENT_PARAM_ETO_PROJECT_DETAILS);
         mUserName = mEtoDetailsPresenter.getUserName(this);
+        mEtoDetailsPresenter.refreshProjectStatusOk(mEtoProject);
         if(mEtoProject != null){
             if (mEtoDetailsPresenter.isLogIn(this)) {
                 showDetails(mEtoProject);
@@ -295,16 +296,28 @@ public class EtoDetailsActivity extends EtoBaseActivity implements EtoDetailsVie
 //        ToastMessage.showNotEnableDepositToastMessage(this, message, R.drawable.ic_error_16px);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onRefreshProjectStatus(Event.OnRefreshEtoProject refreshEtoProject) {
-        EtoProject etoProject = refreshEtoProject.getEtoProject();
+    @Override
+    public void onRefreshEtoProjectStatus(EtoProject etoProject) {
         if (!etoProject.getId().equals(mEtoProject.getId())) {
             return;
         }
+        EventBus.getDefault().post(new Event.OnRefreshEtoProject(etoProject));
         mEtoProject = etoProject;
         setProgress();
         showProjectTime(mEtoProject);
         showProjectStatusIcon(mEtoProject.getStatus());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRefreshProjectStatus(Event.OnRefreshEtoProject refreshEtoProject) {
+//        EtoProject etoProject = refreshEtoProject.getEtoProject();
+//        if (!etoProject.getId().equals(mEtoProject.getId())) {
+//            return;
+//        }
+//        mEtoProject = etoProject;
+//        setProgress();
+//        showProjectTime(mEtoProject);
+//        showProjectStatusIcon(mEtoProject.getStatus());
     }
 
     private void setProgress() {

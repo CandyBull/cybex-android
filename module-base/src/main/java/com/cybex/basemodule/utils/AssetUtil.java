@@ -236,6 +236,18 @@ public class AssetUtil {
         return bigDecimal1.divide(bigDecimal2, 16, RoundingMode.DOWN).doubleValue();
     }
 
+
+
+    public static double remainder(double num1, double num2) {
+        return remainder(String.valueOf(num1), String.valueOf(num2));
+    }
+
+    public static double remainder(String num1, String num2) {
+        BigDecimal bigDecimal1 = new BigDecimal(num1);
+        BigDecimal bigDecimal2 = new BigDecimal(num2);
+        return bigDecimal1.remainder(bigDecimal2).doubleValue();
+     }
+
     /**
      * Format Double
      * @param d

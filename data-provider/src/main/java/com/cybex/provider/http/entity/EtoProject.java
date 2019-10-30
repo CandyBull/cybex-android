@@ -44,9 +44,9 @@ public class EtoProject implements Serializable {
     //参投所有base名字
     private String base_token_name;
     //精度（接受最小单位）
-    private int base_accuracy;
+    private double base_accuracy;
 
-    private int quote_accuracy;
+    private double quote_accuracy;
 
     //个人最大总额度
     private double base_max_quota;
@@ -146,7 +146,7 @@ public class EtoProject implements Serializable {
     public EtoProject(String id, String name, String status, String control_status, String start_at,
                       String end_at, String finish_at, String close_at, String offer_at, String lock_at,
                       float rate, int token_count, String token, String token_name, String base_token,
-                      String base_token_name, int base_accuracy, double base_max_quota, double base_min_quota,
+                      String base_token_name, double base_accuracy, double base_max_quota, double base_min_quota,
                       String base_soft_cap, float base_token_count, float current_base_token_count,
                       int current_user_count, String type, int deleted, String created_at, String update_at,
                       String receive_address, int score, String control, int banner, String is_user_in,
@@ -159,7 +159,7 @@ public class EtoProject implements Serializable {
                       String adds_logo_mobile, String adds_logo_mobile__lang_en,
                       String adds_whitepaper, String adds_whitepaper__lang_en, String adds_detail,
                       String adds_detail__lang_en,String adds_buy_desc, String adds_buy_desc__lang_en, float current_percent, int index,
-                      String user_buy_token, int quote_accuracy, float quote_token_count, String eto_rate, float current_remain_quota_count) {
+                      String user_buy_token, double quote_accuracy, float quote_token_count, String eto_rate, float current_remain_quota_count) {
         this.id = id;
         this.name = name;
         this.status = status;
@@ -361,11 +361,11 @@ public class EtoProject implements Serializable {
         this.base_token_name = base_token_name;
     }
 
-    public int getBase_accuracy() {
+    public double getBase_accuracy() {
         return base_accuracy;
     }
 
-    public void setBase_accuracy(int base_accuracy) {
+    public void setBase_accuracy(double base_accuracy) {
         this.base_accuracy = base_accuracy;
     }
 
@@ -769,11 +769,11 @@ public class EtoProject implements Serializable {
         this.user_buy_token = user_buy_token;
     }
 
-    public int getQuote_accuracy() {
+    public double getQuote_accuracy() {
         return quote_accuracy;
     }
 
-    public void setQuote_accuracy(int quote_accuracy) {
+    public void setQuote_accuracy(double quote_accuracy) {
         this.quote_accuracy = quote_accuracy;
     }
 

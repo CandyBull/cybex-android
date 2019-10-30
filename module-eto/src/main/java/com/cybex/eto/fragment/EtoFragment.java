@@ -111,16 +111,6 @@ public class EtoFragment extends EtoBaseFragment implements EtoMvpView,
 
     @Override
     public void onLoadEtoProjects(List<EtoProject> etoProjects) {
-        if (mCallCount <= etoProjects.size()) {
-            for (EtoProject etoProject : etoProjects) {
-                if (etoProject.getStatus().equals(EtoProject.Status.OK) ||
-                        etoProject.getStatus().equals(EtoProject.Status.PRE)) {
-                    mEtoPresenter.refreshProjectStatusOk(etoProject);
-                }
-            }
-            mCallCount ++;
-        }
-        hideLoadDialog();
         if (mEtoRecyclerViewAdapter == null) {
             mEtoRecyclerViewAdapter = new EtoRecyclerViewAdapter(getContext(), etoProjects, null);
             mEtoRecyclerViewAdapter.setOnItemClickListener(this);
@@ -128,6 +118,7 @@ public class EtoFragment extends EtoBaseFragment implements EtoMvpView,
         } else {
             mEtoRecyclerViewAdapter.setData(etoProjects);
         }
+        hideLoadDialog();
     }
 
     @Override
@@ -147,6 +138,7 @@ public class EtoFragment extends EtoBaseFragment implements EtoMvpView,
 
     @Override
     public void onRefreshEtoProjectStatus(EtoProject etoProject) {
+        // did not use now
         mEtoRecyclerViewAdapter.notifyProjectItem(etoProject);
         EventBus.getDefault().post(new Event.OnRefreshEtoProject(etoProject));
     }

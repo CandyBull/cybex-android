@@ -53,8 +53,8 @@ android {
         applicationId "com.candybull"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 103
-        versionName "1.0.3"
+        versionCode 105
+        versionName "1.0.5"
         multiDexEnabled true
 
         javaCompileOptions {

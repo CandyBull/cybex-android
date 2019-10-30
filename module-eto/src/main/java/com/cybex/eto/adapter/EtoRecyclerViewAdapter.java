@@ -144,6 +144,7 @@ public class EtoRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             viewHolder.mTvTimeLabel.setText(mContext.getResources().getString(R.string.text_start_of_distance));
             viewHolder.mTvTime.setText(parseTime((int) (DateUtils.timeDistance(System.currentTimeMillis(), DateUtils.formatToMillsETO(etoProject.getStart_at()))/1000), false));
             viewHolder.mTvStatus.setTextColor(mContext.getResources().getColor(R.color.primary_color_orange));
+            viewHolder.mIvProgress.setVisibility(View.VISIBLE);
         } else if(status.equals(EtoProject.Status.OK)){
             viewHolder.mTvStatus.setText(mContext.getResources().getString(R.string.text_in_progress));
             viewHolder.mTvTimeLabel.setText(mContext.getResources().getString(R.string.text_end_of_distance));
@@ -151,6 +152,7 @@ public class EtoRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             viewHolder.mTvProgress.setTextColor(mContext.getResources().getColor(R.color.primary_color_orange));
             viewHolder.mPb.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.bg_progress_bar));
             viewHolder.mTvStatus.setTextColor(mContext.getResources().getColor(R.color.primary_color_orange));
+            viewHolder.mIvProgress.setVisibility(View.VISIBLE);
         } else if(status.equals(EtoProject.Status.FINISH)){
             if (TextUtils.isEmpty(etoProject.getT_total_time()) && TextUtils.isEmpty(etoProject.getFinish_at())) {
                 viewHolder.mTvStatus.setText(mContext.getResources().getString(R.string.text_ended));
@@ -175,6 +177,7 @@ public class EtoRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             viewHolder.mTvProgress.setTextColor(mContext.getResources().getColor(R.color.font_color_white_dark));
             viewHolder.mPb.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.bg_progress_full));
             viewHolder.mTvStatus.setTextColor(mContext.getResources().getColor(R.color.font_color_white_dark));
+            viewHolder.mIvProgress.setVisibility(View.VISIBLE);
         }
         float progress = new BigDecimal(String.valueOf(etoProject.getCurrent_percent()))
                 .multiply(new BigDecimal(String.valueOf(1000))).floatValue();

@@ -1,5 +1,6 @@
 package com.cybexmobile;
 
+import com.cybex.basemodule.utils.AssetUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -89,12 +90,13 @@ public class TestSort {
 //        BigDecimal bigDecimal1 = new BigDecimal("123456789");
 //        BigDecimal bigDecimal2 = new BigDecimal("100000");
 //        System.out.println(bigDecimal1.divide(bigDecimal2, 16, RoundingMode.DOWN).doubleValue());
-        double a = 2.99090909909;
-        NumberFormat nf = NumberFormat.getNumberInstance();
-        nf.setMaximumFractionDigits(16);
-        nf.setRoundingMode(RoundingMode.HALF_UP);
-        String rounded = nf.format(a);
-        System.out.println(rounded);
+//        double a = 2.99090909909;
+//        NumberFormat nf = NumberFormat.getNumberInstance();
+//        nf.setMaximumFractionDigits(16);
+//        nf.setRoundingMode(RoundingMode.HALF_UP);
+//        String rounded = nf.format(a);
+//        System.out.println(rounded);
+
 
 
 //        NumberFormat format = NumberFormat.getInstance();
@@ -121,6 +123,19 @@ public class TestSort {
 //        System.out.println(0.0001 == 9.9999999999999999E-5);
 
         //parse();
+        double c = AssetUtil.divide(1, 1.75);
+        String x = String.valueOf(new BigDecimal("1").divide(new BigDecimal("1.75"), 16, RoundingMode.DOWN).doubleValue());
+        String d = String.valueOf(new BigDecimal(x).multiply(new BigDecimal("0.0175")).doubleValue());
+        System.out.println(d);
+        double f = 39.0 / 30.0;
+        BigDecimal e = new BigDecimal(1.399999999999999911182158029987476766109466552734375);
+        double todouble = e.doubleValue();
+        BigDecimal k = new BigDecimal(1.4);
+        double dou = k.doubleValue();
+        BigDecimal sub = e.subtract(k);
+        System.out.println();
+//        2.100000000000000088817841970012523233890533447265625
+//        1.399999999999999911182158029987476766109466552734375
 
     }
 
