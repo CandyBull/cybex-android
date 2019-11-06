@@ -91,7 +91,7 @@ public class Constant {
      *  币ID
      */
     public static final String ASSET_ID_ETH = "1.3.1430";
-    public static final String ASSET_ID_CYB = "1.3.0";
+    public static final String ASSET_ID_CYB = "1.3.1457";
     public static final String ASSET_ID_USDT = "1.3.1431";
     public static final String ASSET_ID_BTC = "1.3.1429";
 
@@ -113,7 +113,7 @@ public class Constant {
      * 币symbol
      */
     public static final String ASSET_SYMBOL_ETH = "ETH";
-    public static final String ASSET_SYMBOL_CYB = "CYB";
+    public static final String ASSET_SYMBOL_CYB = "CANDY.CBD";
     public static final String ASSET_SYMBOL_USDT = "USDT";
     public static final String ASSET_SYMBOL_BTC = "BTC";
     public static final String ASSET_SYMBOL_CANDY = "CANDY";

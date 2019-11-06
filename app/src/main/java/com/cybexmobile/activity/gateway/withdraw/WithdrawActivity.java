@@ -45,6 +45,7 @@ import com.cybex.basemodule.dialog.UnlockDialog;
 import com.cybex.basemodule.event.Event;
 import com.cybex.basemodule.service.WebSocketService;
 import com.cybex.basemodule.toastmessage.ToastMessage;
+import com.cybex.basemodule.utils.AssetUtil;
 import com.cybex.basemodule.utils.SoftKeyBoardListener;
 import com.cybex.provider.SettingConfig;
 import com.cybex.provider.apollo.ApolloClientApi;
@@ -101,6 +102,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
 import static com.cybex.basemodule.constant.Constant.ASSET_ID_CYB;
+import static com.cybex.basemodule.constant.Constant.ASSET_SYMBOL_CYB;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_ADDRESS;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_CRYPTO_ID;
 import static com.cybex.basemodule.constant.Constant.INTENT_PARAM_CRYPTO_NAME;
@@ -631,7 +633,7 @@ public class WithdrawActivity extends BaseActivity {
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                mTransferFeeTextView.setText(String.format("%s CYB", String.valueOf(mFeeAmountObject.amount / Math.pow(10, 5))));
+                                mTransferFeeTextView.setText(String.format("%s %s", String.valueOf(mFeeAmountObject.amount / Math.pow(10, 5)), AssetUtil.parseSymbol(ASSET_SYMBOL_CYB)));
                                 calculateReceiveAmount(mFeeAmountObject);
                                 mIsFeeLoaded = true;
                                 resetWithdrawBtnState();

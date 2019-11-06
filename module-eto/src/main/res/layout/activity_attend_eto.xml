@@ -266,7 +266,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_14"
                     android:layout_marginBottom="@dimen/margin_14"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
                     <TextView
                         android:id="@+id/attend_eto_calculate_format_tv"
                         style="@style/font_gray_small"
