@@ -686,6 +686,10 @@ public class BitsharesWalletWraper {
         mWalletApi.get_ticker(base, quote, callback);
     }
 
+    public void get_ticker_batch(List<List<String>> tickerBatch, MessageCallback<Reply<List<MarketTicker>>> callback) throws NetworkStatusException {
+        mWalletApi.get_ticker_batch(tickerBatch, callback);
+    }
+
 //    public List<MarketTrade> get_trade_history(String base, String quote, Date start, Date end, int limit)
 //            throws NetworkStatusException {
 //        return mWalletApi.get_trade_history(base, quote, start, end, limit);

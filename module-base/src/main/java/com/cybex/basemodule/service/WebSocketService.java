@@ -1,5 +1,6 @@
 package com.cybex.basemodule.service;
 
+import android.accounts.Account;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
@@ -637,6 +638,21 @@ public class WebSocketService extends Service {
         }
     }
 
+    private void loadMarketTickerBatch() {
+        List<List<String>> tickerBatch = new ArrayList<>();
+        for(Map.Entry<String, List<AssetsPair>> entry : mAssetsPairHashMap.entrySet()) {
+            for (AssetsPair assetsPair : entry.getValue()) {
+                if (assetsPair.getBaseAsset() != null && assetsPair.getQuoteAsset() != null) {
+                    List<String> tickerPair = new ArrayList<>();
+                    tickerPair.add(assetsPair.getBase());
+                    tickerPair.add(assetsPair.getQuote());
+                    tickerBatch.add(tickerPair);
+                }
+            }
+        }
+        loadMarketTickerBatch(tickerBatch);
+    }
+
     private void shutdownSchedule(){
         mScheduled.shutdownNow();
     }
@@ -713,6 +729,14 @@ public class WebSocketService extends Service {
         }
     }
 
+    private void loadMarketTickerBatch(List<List<String>> tickerBatch) {
+        try {
+            BitsharesWalletWraper.getInstance().get_ticker_batch(tickerBatch, mMarketTickerListCallback);
+        } catch (NetworkStatusException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void loadAccountObject(String accountId){
         if(mAccountHashMap.containsKey(accountId)){
             EventBus.getDefault().post(new Event.LoadAccountObject(mAccountHashMap.get(accountId)));
@@ -779,7 +803,7 @@ public class WebSocketService extends Service {
     };
 
     //get market ticker callback
-    private MessageCallback mMarketTickerCallback = new MessageCallback<Reply<MarketTicker>>() {
+    private MessageCallback<Reply<MarketTicker>> mMarketTickerCallback = new MessageCallback<Reply<MarketTicker>>() {
 
         @Override
         public void onMessage(Reply<MarketTicker> reply) {
@@ -806,7 +830,32 @@ public class WebSocketService extends Service {
         }
     };
 
-    private MessageCallback mAccountObjectCallback = new MessageCallback<Reply<List<AccountObject>>>() {
+    //get market ticker list callback
+    private MessageCallback<Reply<List<MarketTicker>>> mMarketTickerListCallback = new MessageCallback<Reply<List<MarketTicker>>>() {
+        @Override
+        public void onMessage(Reply<List<MarketTicker>> reply) {
+            List<MarketTicker> marketTickerList = reply.result;
+            if (marketTickerList == null || marketTickerList.isEmpty()) {
+                return;
+            }
+            for(MarketTicker marketTicker : marketTickerList) {
+                for(WatchlistData watchlistData : mWatchlistHashMap.get(marketTicker.base)) {
+                    if (watchlistData.getQuoteId().equals(marketTicker.quote)) {
+                        watchlistData.setMarketTicker(marketTicker);
+                        break;
+                    }
+                }
+            }
+            EventBus.getDefault().post(new Event.UpdateRmbPrice(mAssetRmbPrices));
+        }
+
+        @Override
+        public void onFailure() {
+
+        }
+    };
+
+    private MessageCallback<Reply<List<AccountObject>>> mAccountObjectCallback = new MessageCallback<Reply<List<AccountObject>>>() {
 
         @Override
         public void onMessage(Reply<List<AccountObject>> reply) {
@@ -1184,7 +1233,7 @@ public class WebSocketService extends Service {
 
         @Override
         public void run() {
-            loadMarketTickers();
+            loadMarketTickerBatch();
         }
     }
 

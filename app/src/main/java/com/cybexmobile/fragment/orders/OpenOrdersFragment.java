@@ -460,8 +460,8 @@ public class OpenOrdersFragment extends BaseFragment implements OpenOrderRecycle
                     } else {
                         Operations.cancel_all_operation operation = BitsharesWalletWraper.getInstance().
                                 getLimitOrderCancelAllOperation(ObjectId.create_from_string(mCancelAllOrderFeeObject.asset_id), mCancelAllOrderFeeObject.amount, mFullAccount.account.id,
-                                        mIsLoadAll ? ObjectId.create_from_string(ASSET_ID_CYB) : ObjectId.create_from_string(mWatchlistData.getQuoteId()),
-                                        mIsLoadAll ? ObjectId.create_from_string(ASSET_ID_CYB) : ObjectId.create_from_string(mWatchlistData.getBaseId()));
+                                        mIsLoadAll ? ObjectId.create_from_string("1.3.0") : ObjectId.create_from_string(mWatchlistData.getQuoteId()),
+                                        mIsLoadAll ? ObjectId.create_from_string("1.3.0") : ObjectId.create_from_string(mWatchlistData.getBaseId()));
                         if (activity.currentCard == null || mIsUsedCloudPassword) {
                             signedTransaction = BitsharesWalletWraper.getInstance().getSignedTransaction(
                                     mFullAccount.account, operation, ID_CANCEL_ALL_OPERATION, reply.result);
