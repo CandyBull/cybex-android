@@ -78,7 +78,7 @@ public class BitsharesWalletWraper {
     private BitsharesWalletWraper() {
         //mstrWalletFilePath = BitsharesApplication.getInstance().getFilesDir().getPath();
         mstrWalletFilePath += "/wallet.json";
-        mUnlockWalletPeriod = PreferenceManager.getDefaultSharedPreferences(BaseActivity.getContext()).getInt(Constant.PREF_UNLOCK_WALLET_PERIOD, 1);
+        mUnlockWalletPeriod = PreferenceManager.getDefaultSharedPreferences(BaseActivity.getContext()).getInt(Constant.PREF_UNLOCK_WALLET_PERIOD, 5);
         EventBus.getDefault().register(this);
     }
 
